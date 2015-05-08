@@ -1,13 +1,13 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var del = require('del');
-var $ = require('gulp-load-plugins')({
+var plugins = require('gulp-load-plugins')({
     lazy: false
 });
 
 gulp.task('copy:normalize', function () {
     return gulp.src('./bower_components/normalize-css/normalize.css')
-        .pipe($.rename('normalize.scss'))
+        .pipe(plugins.rename('normalize.scss'))
         .pipe(gulp.dest('./src/sass'));
 });
 
@@ -23,7 +23,7 @@ gulp.task('copy:base', function () {
 
 gulp.task('copy:htaccess', function () {
     return gulp.src('./src/a.htaccess')
-        .pipe($.rename('.htaccess'))
+        .pipe(plugins.rename('.htaccess'))
         .pipe(gulp.dest('./build'));
 
 });
@@ -33,9 +33,13 @@ gulp.task('copy', function (done) {
 
 gulp.task('styles', ['copy'], function () {
     return gulp.src('./src/sass/main.scss')
-        .pipe($.sass())
-        .pipe($.autoprefixer('last 2 versions'))
-        .pipe($.minifyCss())
+        .pipe(plugins.sass())
+        .pipe(plugins.autoprefixer({
+            browsers: ['last 3 versions', 'ie >= 8', '> 1%', 'Safari >= 6'],
+            cascade: false
+        }))
+        .pipe(plugins.autoprefixer('last 2 versions'))
+        .pipe(plugins.minifyCss())
         .pipe(gulp.dest('./build/css'));
 });
 
@@ -48,13 +52,13 @@ gulp.task('scripts', function () {
             'bower_components/FitText.js/jquery.fittext.js',
             'bower_components/modernizr/modernizr.js'
         ])
-        .pipe($.uglify())
+        .pipe(plugins.uglify())
         .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('gh-pages', function () {
     return gulp.src('./build/**/*')
-        .pipe($.ghPages({
+        .pipe(plugins.ghPages({
             push: true
         }));
 });
@@ -63,9 +67,7 @@ gulp.task('build', function (done) {
     runSequence('clean', ['copy', 'scripts', 'styles'], done);
 });
 
-gulp.task('default', function (done) {
-    runSequence('build', done);
-});
+gulp.task('default', ['build']);
 
 gulp.task('deploy', ['build'], function (done) {
     runSequence('gh-pages', done);

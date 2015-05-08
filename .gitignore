@@ -1,6 +1,7 @@
-bower_components
-node_modules
-sass/_normalize.scss
-build
-.sass-cache
-gh-pages
+/bower_components
+/node_modules
+/sass/_normalize.scss
+/build
+/.public
+/.sass-cache
+/gh-pages
