@@ -4,6 +4,7 @@ var del = require('del');
 var plugins = require('gulp-load-plugins')({
     lazy: false
 });
+var autoprefixer = require('autoprefixer-core');
 
 gulp.task('copy:normalize', function () {
     return gulp.src('./bower_components/normalize-css/normalize.css')
@@ -34,12 +35,16 @@ gulp.task('copy', function (done) {
 gulp.task('styles', ['copy'], function () {
     return gulp.src('./src/sass/main.scss')
         .pipe(plugins.sass())
-        .pipe(plugins.autoprefixer({
-            browsers: ['last 3 versions', 'ie >= 8', '> 1%', 'Safari >= 6'],
-            cascade: false
+        .pipe(plugins.postcss([
+            autoprefixer({
+                browsers: ['last 3 versions', 'ie >= 8', '> 1%', 'Safari >= 6'],
+                cascade: false
+            })
+        ]))
+        .pipe(plugins.minifyCss({
+            rebase: false,
+            aggressiveMerging: false
         }))
-        .pipe(plugins.autoprefixer('last 2 versions'))
-        .pipe(plugins.minifyCss())
         .pipe(gulp.dest('./build/css'));
 });
 
