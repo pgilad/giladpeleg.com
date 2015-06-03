@@ -1,58 +1,51 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Gilad Peleg</title>
-    <meta name="keywords" content="gilad peleg, web developer, front-end, personal website, javascript">
+    <meta name="keywords" content="gilad peleg, web developer, front-end, personal website, javascript, ruby, php, coffeescript">
     <meta name="description" content="Gilad's Peleg Personal Website">
     <meta name="viewport" content="width=device-width">
+
+    <link rel="canonical" href="http://www.giladpeleg.com">
 
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/main.css">
     <script src="js/modernizr.js"></script>
-  </head>
-  <body>
-    <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser.
-    Please <a href="http://browsehappy.com/">upgrade your browser</a> or
-    <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a>
-    to improve your experience.</p>
-    <![endif]-->
-
+</head>
+<body>
     <div id="container">
-      <div id="cell">
-        <div id="content">
-            Hi, I'm Gilad Peleg. I write code in JS, Coffee, Ruby &amp; PHP.
-            I work as a Front-End Engineer @<a id="work" href="http://blazemeter.com">BlazeMeter</a>.
-            Look at my code on <a href="https://github.com/pgilad/" id="github">Github</a>.
-            Follow me on <a href="https://twitter.com/GiladPeleg" id="twitter">Twitter</a>.
-            See my resume on <a href="https://www.linkedin.com/in/giladpeleg" id="resume">LinkedIn</a>.
-            <a href="mailto:giladp007@gmail.com" id="email" title="Emails still work">Email</a> me.
+        <div id="cell">
+            <div id="content">
+                Hi, I'm Gilad Peleg. I write code in JS, Coffee, Ruby &amp; PHP.
+                I work as a Front-End Engineer @<a id="work" href="http://blazemeter.com">BlazeMeter</a>.
+                Look at my code on <a href="https://github.com/pgilad/" id="github">Github</a>.
+                Follow me on <a href="https://twitter.com/GiladPeleg" id="twitter">Twitter</a>.
+                See my resume on <a href="https://www.linkedin.com/in/giladpeleg" id="resume">LinkedIn</a>.
+                <a href="mailto:giladp007@gmail.com" id="email" title="Emails still work">Email</a> me.
+            </div>
         </div>
-      </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script src="js/jquery.fittext.js"></script>
-    <script>
-      jQuery('#content').fitText(1, {minFontSize:'35px', maxFontSize: '60px'});
-    </script>
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <script src="js/jquery.fittext.js"></script>
 
-    ga('create', 'UA-58310464-1', 'auto');
-    ga('send', 'pageview');
+        <script>
+            $('#content').fitText(1, {minFontSize:'35px', maxFontSize: '60px'});
+        </script>
 
-    </script>
-  </body>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-58310464-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
 </html>
