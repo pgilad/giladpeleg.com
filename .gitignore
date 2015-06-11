@@ -4,4 +4,5 @@
 /build
 /.public
 /.sass-cache
+.publish
 /gh-pages
