@@ -5,6 +5,7 @@ var plugins = require('gulp-load-plugins')({
     lazy: false
 });
 var autoprefixer = require('autoprefixer-core');
+var mySite = 'http://www.giladpeleg.com';
 
 gulp.task('copy:normalize', function () {
     return gulp.src('./bower_components/normalize-css/normalize.css')
@@ -52,6 +53,14 @@ gulp.task('clean', function (done) {
     del('./build', done);
 });
 
+gulp.task('sitemap', function () {
+    return gulp.src('./src/*.html')
+        .pipe(plugins.sitemap({
+            siteUrl: mySite
+        }))
+        .pipe(gulp.dest('./build'));
+});
+
 gulp.task('scripts', function () {
     return gulp.src([
             'bower_components/FitText.js/jquery.fittext.js',
@@ -69,7 +78,7 @@ gulp.task('gh-pages', function () {
 });
 
 gulp.task('build', function (done) {
-    runSequence('clean', ['copy', 'scripts', 'styles'], done);
+    runSequence('clean', ['copy', 'scripts', 'styles', 'sitemap'], done);
 });
 
 gulp.task('default', ['build']);
