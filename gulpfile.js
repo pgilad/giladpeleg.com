@@ -1,21 +1,15 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var del = require('del');
-var plugins = require('gulp-load-plugins')({
-    lazy: false
-});
 var autoprefixer = require('autoprefixer-core');
+var del = require('del');
+var gulp = require('gulp');
+var plugins = require('gulp-load-plugins')({ lazy: false });
+var runSequence = require('run-sequence');
+
 var mySite = 'http://www.giladpeleg.com';
 
 gulp.task('copy:normalize', function () {
-    return gulp.src('./bower_components/normalize-css/normalize.css')
+    return gulp.src('./node_modules/normalize-css/normalize.css')
         .pipe(plugins.rename('normalize.scss'))
         .pipe(gulp.dest('./src/sass'));
-});
-
-gulp.task('copy:jquery', function () {
-    return gulp.src('./bower_components/jquery/dist/jquery.min.{map,js}')
-        .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('copy:base', function () {
@@ -30,7 +24,7 @@ gulp.task('copy:htaccess', function () {
 
 });
 gulp.task('copy', function (done) {
-    runSequence(['copy:normalize', 'copy:jquery', 'copy:base', 'copy:htaccess'], done);
+    runSequence(['copy:normalize', 'copy:base', 'copy:htaccess'], done);
 });
 
 gulp.task('styles', ['copy'], function () {
@@ -62,10 +56,7 @@ gulp.task('sitemap', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src([
-            'bower_components/FitText.js/jquery.fittext.js',
-            'bower_components/modernizr/modernizr.js'
-        ])
+    return gulp.src(['./node_modules/fittext.js/jquery.fittext.js'])
         .pipe(plugins.uglify())
         .pipe(gulp.dest('./build/js'));
 });

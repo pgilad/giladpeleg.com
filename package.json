@@ -21,5 +21,11 @@
     "gulp-sitemap": "^2.1.1",
     "gulp-uglify": "^1.2.0",
     "run-sequence": "^1.1.0"
+  },
+  "dependencies": {
+    "fittext.js": "1.2.0",
+    "jquery": "3.2.1",
+    "modernizr": "3.4.0",
+    "normalize-css": "2.3.1"
   }
 }
